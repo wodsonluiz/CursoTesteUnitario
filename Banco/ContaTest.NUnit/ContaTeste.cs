@@ -26,7 +26,6 @@ namespace ContaTest.NUnit
         [Category("Principal")]
         [TestCase(120, true)]
         [TestCase(-120, false)]
-        [Ignore("Pendencia")]
         public void TesteSacar(int valor, bool result)
         {
             var resultado = _conta.Sacar2(valor);
@@ -36,7 +35,6 @@ namespace ContaTest.NUnit
 
         [Test]
         [Timeout(6000)]
-        [Ignore("Pendencia")]
         public void TesteMetodoLento()
         {
             var resultado = _conta.Sacar2(0);
@@ -46,7 +44,6 @@ namespace ContaTest.NUnit
 
         [Test]
         [Category("Valores Invalidos")]
-        [Ignore("Pendencia")]
         public void TestSacarSemSaldo()
         {
             var resultado = _conta.Sacar(300);
@@ -68,7 +65,6 @@ namespace ContaTest.NUnit
         [TestCase(-10)]
         [TestCase(-333)]
         [TestCase(-444)]
-        [Ignore("Pendencia")]
         public void TesteSacarValorNegativo2(int valor)
         {
             var resultado = _conta.Sacar2(valor);

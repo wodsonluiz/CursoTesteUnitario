@@ -7,11 +7,13 @@ namespace Conta
     {
         private string _cpf;
         private decimal _saldo;
+        private readonly ValidadorCredito _validadorCredito;
 
         public ContaBancaria(string cpf, decimal saldo)
         {
             _cpf = cpf;
             _saldo = saldo;
+            _validadorCredito = new ValidadorCredito(cpf);
         }
 
         public decimal GetSaldo()
@@ -42,7 +44,7 @@ namespace Conta
 
         public bool Sacar2(decimal valor)
         {
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
 
             if (valor <= 0)
             {
@@ -56,6 +58,18 @@ namespace Conta
 
             _saldo -= valor;
             return true;
+        }
+
+        public bool SolicitarEmprestimo(decimal valor)
+        {
+            bool resultado = _validadorCredito.ValidarCredito(this._cpf, valor);
+
+            if (resultado)
+            {
+                this._saldo += valor;
+            }
+
+            return resultado;
         }
     }
 }
