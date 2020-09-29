@@ -7,13 +7,17 @@ namespace Conta
     {
         private string _cpf;
         private decimal _saldo;
-        private readonly ValidadorCredito _validadorCredito;
+        private IValidadorCredito _validadorCredito;
 
         public ContaBancaria(string cpf, decimal saldo)
         {
             _cpf = cpf;
             _saldo = saldo;
-            _validadorCredito = new ValidadorCredito(cpf);
+        }
+
+        public void SetValidadorCredito(IValidadorCredito validadorCredito)
+        {
+            _validadorCredito = validadorCredito;
         }
 
         public decimal GetSaldo()

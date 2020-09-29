@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Conta
 {
-    class ValidadorCredito
+    public class ValidadorCredito : IValidadorCredito
     {
         private readonly string _cpf; 
         public ValidadorCredito(string cpf)
