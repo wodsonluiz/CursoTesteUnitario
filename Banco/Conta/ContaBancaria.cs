@@ -66,7 +66,22 @@ namespace Conta
 
         public bool SolicitarEmprestimo(decimal valor)
         {
-            bool resultado = _validadorCredito.ValidarCredito(this._cpf, valor);
+            bool resultado = false;
+
+            if (valor >= _saldo * 10)
+            {
+                return resultado;
+            }
+
+            try
+            {
+                resultado = _validadorCredito.ValidarCredito(this._cpf, valor);
+            }
+            catch (InvalidOperationException)
+            {
+
+                return resultado;
+            }
 
             if (resultado)
             {

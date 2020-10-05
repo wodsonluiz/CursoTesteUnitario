@@ -90,16 +90,5 @@ namespace ContaTest.NUnit
             //Assert.Less(a, 200);                      compara se o segundo parametro é maior que o primeiro
             //Assert.Ignore();                          igonora o teste
         }
-
-        [Test]
-        public void TestSolicitarEmprestimo()
-        {
-            _conta.SetValidadorCredito(new ValidadorCreditoFake());
-
-            var resultado = _conta.SolicitarEmprestimo(5000);
-
-            Assert.IsTrue(resultado);
-
-        }
     }
 }
